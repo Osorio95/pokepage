@@ -1,0 +1,142 @@
+body {
+    background: rgb(85, 144, 189);
+    background: linear-gradient( 90deg, rgba(85, 144, 189, 1) 0%, rgba(108, 183, 240, 1) 54%, rgba(182, 216, 242, 1) 82%);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Oswald", sans-serif;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+#mainCont {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.pokeContainer,
+.pokeContainer-back {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+}
+
+.pokeContainer {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr 1fr;
+    grid-template-rows: 3fr 1fr repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.pokeTypes {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.pokeType {
+    align-self: center;
+}
+
+.pokeType p {
+    align-self: center;
+    text-align: center;
+}
+
+.typeBar {
+    justify-content: center;
+}
+
+.imgContainer {
+    grid-area: 1 / 1 / 2 / 2;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+}
+
+.backgroundSVG {
+    z-index: 1;
+}
+
+.img {
+    text-align: center;
+    margin: auto;
+    z-index: 2;
+}
+
+.pokeContainer p {
+    margin: 5px;
+}
+
+.pokeId {
+    grid-area: 3 / 1 / 4 / 4;
+    align-self: center;
+    color: gray;
+}
+
+.pokeName {
+    grid-area: 4 / 1 / 6 / 4;
+    align-self: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#spinner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.pagination {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.card-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .card-container {
+    transform: rotateY(180deg);
+}
+
+.pokeContainer,
+.pokeContainer-back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.pokeContainer-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0%;
+}
+
+.stat-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    text-align: left;
+}
