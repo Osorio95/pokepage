@@ -4,6 +4,8 @@ body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-family: "Oswald", sans-serif;
+    display: flex;
+    height: 100%;
 }
 
 h1 {
@@ -11,11 +13,15 @@ h1 {
     text-align: center;
 }
 
+#rightContent {
+    margin-left: 220px;
+    width: 80%;
+}
+
 #mainCont {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
-    width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
@@ -135,8 +141,34 @@ h1 {
     top: 0%;
 }
 
-.stat-container {
+.nav-list {
+    margin: 0;
+    padding: 0;
+}
+
+.statsContainer {
+    height: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    text-align: left;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    align-items: center;
+}
+
+.statContainer {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.8fr 1fr;
+}
+
+.statContainer div {
+    align-self: center;
+}
+
+.statContainer p {
+    align-self: center;
+    margin: 0;
+    padding: 0;
 }
