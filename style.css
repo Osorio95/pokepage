@@ -1,27 +1,29 @@
+@font-face {
+    font-family: 'Pokemon';
+    src: url(font/Pokemon\ Solid.ttf);
+}
+
 body {
     background: rgb(85, 144, 189);
     background: linear-gradient( 90deg, rgba(85, 144, 189, 1) 0%, rgba(108, 183, 240, 1) 54%, rgba(182, 216, 242, 1) 82%);
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-family: "Oswald", sans-serif;
-    display: flex;
-    height: 100%;
 }
 
 h1 {
     color: white;
     text-align: center;
-}
+    font-family: Pokemon;
+    text-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
 
-#rightContent {
-    margin-left: 220px;
-    width: 80%;
 }
 
 #mainCont {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
@@ -141,34 +143,8 @@ h1 {
     top: 0%;
 }
 
-.nav-list {
-    margin: 0;
-    padding: 0;
-}
-
-.statsContainer {
-    height: 100%;
+.stat-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    align-items: center;
-}
-
-.statContainer {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.8fr 1fr;
-}
-
-.statContainer div {
-    align-self: center;
-}
-
-.statContainer p {
-    align-self: center;
-    margin: 0;
-    padding: 0;
+    grid-template-columns: 1fr 2fr;
+    text-align: left;
 }

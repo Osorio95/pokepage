@@ -1,19 +1,9 @@
 const cont = document.querySelector('#mainCont');
 
 const spinner = document.querySelector('#spinner');
+
 const previous = document.querySelector('#previous');
 const next = document.querySelector('#next');
-
-let searchBar = document.querySelector('#searchBtn');
-
-let sortBtn = document.querySelector('#sortBtn');
-
-sortBtn.addEventListener('click', () => {
-    doSort()
-    console.log('sorted')
-})
-
-searchBar.addEventListener('input', pokeFetch(searchBar.value));
 
 const typeColors = {
     normal: "#A8A77A",
@@ -38,6 +28,13 @@ const typeColors = {
 
 let offset = 1;
 let limit = 8;
+
+const refreshBtn = document.querySelector('#refreshBtn')
+
+refreshBtn.addEventListener('click', () => {
+    doSort()
+})
+
 
 previous.addEventListener('click', () => {
     if (offset != 1) {
@@ -67,6 +64,7 @@ function pokeFetch(id) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             pokeProfile(data);
             spinner.style.display = 'none';
         })
@@ -95,23 +93,13 @@ function pokeProfile(pokemon) {
 
     const spriteContainer = document.createElement('div');
     spriteContainer.classList.add('imgContainer');
-    spriteContainer.style.backgroundImage = `url(blobs/${pokemon.types[0].type.name}/main.svg)`
-
-    const secondSpriteContainer = document.createElement('div');
-    secondSpriteContainer.classList.add('imgContainer');
-
-    spriteContainer.appendChild(secondSpriteContainer);
-
-
-    if (pokemon.types.length > 1) {
-        secondSpriteContainer.style.backgroundImage = `url(blobs/${pokemon.types[1].type.name}/secondary.svg)`;
-    }
+    spriteContainer.style.backgroundImage = `url(blobs/${pokemon.types[0].type.name}.svg)`
 
     const sprite = document.createElement('img');
     sprite.classList.add('img')
     sprite.src = pokemon.sprites.front_default;
 
-    secondSpriteContainer.appendChild(sprite);
+    spriteContainer.appendChild(sprite);
 
     const pokeId = document.createElement('p');
     pokeId.classList.add('pokeId')
@@ -145,31 +133,22 @@ function progressBar(stats) {
 
     for (let stat of stats) {
 
-        const statPercent = stat.base_stat * 0.5 + '%';
+        const statPercent = stat.base_stat * 0.8 + '%';
         const statContainer = document.createElement('div');
-        statContainer.classList.add('col');
         statContainer.classList.add('statContainer');
-        statContainer.classList.add(`stat-${stat.stat.name}`)
 
-        const statName = document.createElement('p');
-        statName.classList.add('text-capitalize');
-        statName.classList.add('statName');
+        const statName = document.createElement('div');
+        statName.classList.add('text-capitalize')
         statName.textContent = stat.stat.name;
 
         const progress = document.createElement('div');
         progress.classList.add('progress');
-        progress.style.height = '60px';
-        progress.classList.add('statBar');
-
 
         const progressBar = document.createElement('div');
         progressBar.classList.add('progress-bar');
-        progressBar.classList.add('statBar');
-        progressBar.setAttribute('role', 'progressbar');
         progressBar.setAttribute('aria-valuenow', stat.base_stat);
         progressBar.setAttribute('aria-valuemin', 0);
         progressBar.setAttribute('aria-valuemax', 200);
-        progressBar.style.height = '60px';
         progressBar.style.width = statPercent;
 
         progressBar.textContent = stat.base_stat;
@@ -179,7 +158,6 @@ function progressBar(stats) {
         statContainer.appendChild(progress);
 
         statsContainer.appendChild(statContainer);
-
     }
 
     return statsContainer;
@@ -234,7 +212,7 @@ function doSort() {
         if (!elements[i].id) {
             continue;
         }
-        let sortPart = elements[i].id.split("-");
+        var sortPart = elements[i].id.split("-");
         if (sortPart.length > 1) {
             sortMe.push([1 * sortPart[1], elements[i]]);
         }
@@ -242,7 +220,7 @@ function doSort() {
     sortMe.sort(function(x, y) {
         return x[0] - y[0];
     });
-    for (let i = 0; i < sortMe.length; i++) {
+    for (var i = 0; i < sortMe.length; i++) {
         container.appendChild(sortMe[i][1]);
     }
 }
